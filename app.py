@@ -1,4 +1,5 @@
 import os
+import random
 import requests
 from flask import Flask, request
 
@@ -21,30 +22,18 @@ def send_message(chat_id, text):
 
 def get_brent_price():
     """
-    Placeholder semplice.
-    Per ora restituisce un messaggio fisso.
-    Più avanti lo colleghiamo a un prezzo reale.
-    """
-   import random
-
-def get_brent_price():
-    """
     Simulazione logica intraday (2 ore)
     Versione base senza API reali
     """
-
-    # Simulazione dati (poi li sostituiremo con dati reali)
     trend = random.choice(["rialzista", "ribassista", "neutrale"])
     rsi = random.randint(30, 70)
     volatilita = random.choice(["bassa", "media", "alta"])
 
     risposta = "📊 Analisi petrolio (2H)\n\n"
-
     risposta += f"Trend breve: {trend}\n"
     risposta += f"RSI: {rsi}\n"
     risposta += f"Volatilità: {volatilita}\n\n"
 
-    # Logica decisionale
     if trend == "rialzista" and 40 < rsi < 65 and volatilita != "alta":
         risposta += "🟢 POSSIBILE LONG (compra)\n"
         risposta += "👉 Solo se il prezzo conferma il movimento\n"
