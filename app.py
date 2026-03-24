@@ -25,7 +25,39 @@ def get_brent_price():
     Per ora restituisce un messaggio fisso.
     Più avanti lo colleghiamo a un prezzo reale.
     """
-    return "Prezzo petrolio: funzione in preparazione."
+   import random
+
+def get_brent_price():
+    """
+    Simulazione logica intraday (2 ore)
+    Versione base senza API reali
+    """
+
+    # Simulazione dati (poi li sostituiremo con dati reali)
+    trend = random.choice(["rialzista", "ribassista", "neutrale"])
+    rsi = random.randint(30, 70)
+    volatilita = random.choice(["bassa", "media", "alta"])
+
+    risposta = "📊 Analisi petrolio (2H)\n\n"
+
+    risposta += f"Trend breve: {trend}\n"
+    risposta += f"RSI: {rsi}\n"
+    risposta += f"Volatilità: {volatilita}\n\n"
+
+    # Logica decisionale
+    if trend == "rialzista" and 40 < rsi < 65 and volatilita != "alta":
+        risposta += "🟢 POSSIBILE LONG (compra)\n"
+        risposta += "👉 Solo se il prezzo conferma il movimento\n"
+        risposta += "⚠️ Rischio: medio"
+    elif trend == "ribassista" and 35 < rsi < 60 and volatilita != "alta":
+        risposta += "🔴 POSSIBILE SHORT (vendi)\n"
+        risposta += "👉 Solo su conferma\n"
+        risposta += "⚠️ Rischio: medio"
+    else:
+        risposta += "⛔ NESSUNA OPERAZIONE\n"
+        risposta += "👉 Mercato instabile o senza vantaggio"
+
+    return risposta
 
 
 @app.route("/", methods=["GET"])
